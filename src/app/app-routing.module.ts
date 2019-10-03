@@ -7,7 +7,7 @@ import {PunchInComponent} from "./punch-in/punch-in.component";
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'punch-in', component: PunchInComponent},
-  {path: '**', redirectTo: '/login', pathMatch: 'full'}
+  {path: '**', redirectTo: '/login'}
 ];
 
 @NgModule({

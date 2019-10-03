@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'clock-login',
@@ -11,7 +12,10 @@ export class LoginComponent implements OnInit {
   private username: string;
   private password: string;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {
   }
 
   ngOnInit() {
@@ -31,6 +35,7 @@ export class LoginComponent implements OnInit {
 
     if (form.valid) {
       console.log(`form is valid`, );
+      this.router.navigateByUrl('/punch-in');
     }
   }
 }
