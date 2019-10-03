@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+
+#punch-container {
+  margin-bottom: 20px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.punch-button {
+  width: 80%;
+  height: 80%;
+
+  &.clear {
+    background: mat-color($mat-amber, 500);
+  }
+
+  &.submit {
+    background: mat-color($mat-light-green, 500);
+  }
+}
+
+

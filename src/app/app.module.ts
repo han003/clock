@@ -15,6 +15,7 @@ import {MatCardModule} from "@angular/material/card";
 import {FlexModule} from "@angular/flex-layout";
 import {ReactiveFormsModule} from "@angular/forms";
 import { PunchInComponent } from './punch-in/punch-in.component';
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PunchInComponent } from './punch-in/punch-in.component';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

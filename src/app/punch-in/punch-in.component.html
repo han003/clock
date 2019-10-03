@@ -1,1 +1,16 @@
-<p>punch-in works!</p>
+<div id="punch-container" fxLayout="row" fxLayoutAlign="center center">
+  <mat-form-field>
+    <input matInput placeholder="Badge number" [value]="number" readonly>
+  </mat-form-field>
+</div>
+
+<mat-grid-list cols="3" rowHeight="80px">
+  <mat-grid-tile
+    *ngFor="let tile of tiles"
+    colspan="1"
+    rowspan="1">
+    <button [ngClass]="tile.class" class="punch-button" mat-raised-button (click)="tile.func(tile)">
+      <span class="mat-h2">{{tile.text}}</span>
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>
