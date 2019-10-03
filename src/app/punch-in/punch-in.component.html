@@ -1,7 +1,6 @@
 <div id="punch-container" fxLayout="row" fxLayoutAlign="center center">
-  <mat-form-field>
-    <input matInput placeholder="Badge number" [value]="number" readonly>
-  </mat-form-field>
+  <div class="badge-number mat-display-2" *ngIf="number">{{number}}</div>
+  <div class="badge-number placeholder mat-display-2" *ngIf="!number">Badge number</div>
 </div>
 
 <mat-grid-list cols="3" rowHeight="80px">

@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class PunchInComponent implements OnInit {
   public tiles: Object[];
   public numbers: any[];
-  public number: String;
+  public number: Number;
 
   constructor() {
   }
@@ -27,7 +27,7 @@ export class PunchInComponent implements OnInit {
       {text: 9, func: this.addNumber.bind(this)},
       {text: 'Clear', class: 'clear', func: this.clear.bind(this)},
       {text: 0, func: this.addNumber.bind(this)},
-      {text: 'Submit', class: 'submit'},
+      {text: 'Submit', class: 'submit', func: this.submit.bind(this)},
     ];
 
     this.setNumber();
@@ -44,6 +44,12 @@ export class PunchInComponent implements OnInit {
   }
 
   setNumber() {
-    this.number = this.numbers.join('');
+    this.number = parseInt(this.numbers.join(''));
+  }
+
+  submit() {
+    if (this.number) {
+      console.log(`submitting`, this.number);
+    }
   }
 }

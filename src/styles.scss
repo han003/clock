@@ -29,7 +29,7 @@ $easyatwork-clock-theme: mat-light-theme($easyatwork-clock-primary, $easyatwork-
 
 html, body {
   height: 100%;
-  background: #fafafa;
+  background: mat-color($mat-gray, 50);
 }
 
 body {

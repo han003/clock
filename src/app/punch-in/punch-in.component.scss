@@ -3,8 +3,17 @@
 #punch-container {
   margin-bottom: 20px;
 
-  mat-form-field {
-    width: 100%;
+  .badge-number {
+    min-width: 100%;
+    padding: 15px;
+    background: mat-color($mat-gray, 200);
+    border-radius: 10px;
+    margin: 0;
+    text-align: center;
+
+    &.placeholder {
+      color: mat-color($mat-gray, 400);
+    }
   }
 }
 
