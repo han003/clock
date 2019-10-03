@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Form, FormBuilder} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'clock-login',
@@ -7,21 +7,30 @@ import {Form, FormBuilder} from "@angular/forms";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  private hide: boolean;
-  private loginForm: any;
+  private loginForm: FormGroup;
+  private username: string;
+  private password: string;
 
   constructor(private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
-    this.hide = true;
     this.loginForm = this.formBuilder.group({
-      username: '',
-      password: ''
+      username: new FormControl(this.username, [
+        Validators.required,
+        Validators.email
+      ]),
+      password: new FormControl(this.password, [
+        Validators.required
+      ])
     })
   }
 
-  login(value) {
-    console.log(`Pressed login`, value);
+  login(form: FormGroup) {
+    console.log(`Pressed login`, form);
+
+    if (form.valid) {
+      console.log(`form is valid`, );
+    }
   }
 }
