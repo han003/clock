@@ -17,7 +17,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { PunchInComponent } from './punch-in/punch-in.component';
 import {MatGridListModule} from "@angular/material/grid-list";
 import { TimezoneSelectorDialogComponent } from './header/timezone-selector-dialog/timezone-selector-dialog.component';
-import {MatDialogModule} from "@angular/material/dialog";
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dialog";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
@@ -45,7 +45,15 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     MatAutocompleteModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {
+        panelClass: 'default-dialog-panel',
+        disableClose: true,
+        hasBackdrop: true
+      }
+    }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     TimezoneSelectorDialogComponent
