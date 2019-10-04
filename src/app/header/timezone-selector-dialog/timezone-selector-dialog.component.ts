@@ -36,10 +36,6 @@ export class TimezoneSelectorDialogComponent implements OnInit {
     return zone ? zone.name : undefined;
   }
 
-  onCancel() {
-    this.dialogRef.close();
-  }
-
   onUpdate() {
     this.dialogRef.close(this.myControl.value);
   }

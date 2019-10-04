@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
+@import "assets/styles/classes";
+@import "assets/styles/responsive-breakpoints";
+@import 'assets/styles/mat-dialog';
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';

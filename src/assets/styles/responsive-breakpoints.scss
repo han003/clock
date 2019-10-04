@@ -1,0 +1,88 @@
+// https://github.com/angular/flex-layout/wiki/Responsive-API
+
+/**
+Specific breakpoint
+ */
+@mixin bpXs {
+  @media screen and (max-width: 599px) {
+    @content;
+  }
+}
+
+@mixin bpSm {
+  @media screen and (min-width: 600px) and (max-width: 959px) {
+    @content;
+  }
+}
+
+@mixin bpMd {
+  @media screen and (min-width: 960px) and (max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin bpLg {
+  @media screen and (min-width: 1280px) and (max-width: 1919px) {
+    @content;
+  }
+}
+
+@mixin bpXl {
+  @media screen and (min-width: 1920px) and (max-width: 5000px) {
+    @content;
+  }
+}
+
+/**
+Less than
+ */
+@mixin bpLtSm {
+  @media screen and (max-width: 599px) {
+    @content;
+  }
+}
+
+@mixin bpLtMd {
+  @media screen and (max-width: 959px) {
+    @content;
+  }
+}
+
+@mixin bpLtLg {
+  @media screen and (max-width: 1279px) {
+    @content;
+  }
+}
+
+@mixin bpLtXl {
+  @media screen and (max-width: 1919px) {
+    @content;
+  }
+}
+
+/**
+Greater than
+ */
+@mixin bpGtXs {
+  @media screen and (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin bpGtSm {
+  @media screen and (min-width: 960px) {
+    @content;
+  }
+}
+
+@mixin bpGtMd {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin bpGtLg {
+  @media screen and (min-width: 1920px) {
+    @content;
+  }
+}

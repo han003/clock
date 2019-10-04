@@ -1,0 +1,23 @@
+.default-dialog-panel {
+  margin: 0 15px;
+
+  @include bpXs {
+    width: 100%;
+  }
+
+  @include bpSm {
+    width: 70%;
+  }
+
+  @include bpMd {
+    width: 45%;
+  }
+
+  @include bpLg {
+    width: 35%;
+  }
+
+  @include bpXl {
+    width: 25%;
+  }
+}
