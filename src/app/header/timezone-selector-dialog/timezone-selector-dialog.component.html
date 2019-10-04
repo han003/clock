@@ -5,8 +5,8 @@
   </mat-form-field>
 
   <mat-autocomplete #zones="matAutocomplete" [displayWith]="displayFn">
-    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-      {{ option.name }}
+    <mat-option *ngFor="let zone of filteredZones | async" [value]="zone">
+      {{ zone.name }}
     </mat-option>
   </mat-autocomplete>
 </div>

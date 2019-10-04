@@ -1,14 +1,9 @@
-import * as moment from 'moment-timezone/builds/moment-timezone-with-data-2012-2022.min';
-import {Component, OnInit} from '@angular/core';
-import {MatDialogRef} from "@angular/material/dialog";
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormControl} from "@angular/forms";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
-
-export interface Zone {
-  key: string,
-  name: string
-}
+import {Zone} from "../header.component";
 
 @Component({
   selector: 'clock-timezone-selector-dialog',
@@ -16,22 +11,16 @@ export interface Zone {
   styleUrls: ['./timezone-selector-dialog.component.scss']
 })
 export class TimezoneSelectorDialogComponent implements OnInit {
-  options: Zone[];
   myControl = new FormControl();
-  filteredOptions: Observable<Zone[]>;
+  filteredZones: Observable<Zone[]>;
 
-  constructor(public dialogRef: MatDialogRef<TimezoneSelectorDialogComponent>) {
-  }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public zones: Zone[],
+    public dialogRef: MatDialogRef<TimezoneSelectorDialogComponent>
+  ) {}
 
   ngOnInit() {
-    this.options = moment.tz.names().map((n, i) => {
-      return {
-        index: i,
-        name: n.replace('_', ' ')
-      }
-    });
-
-    this.filteredOptions = this.myControl.valueChanges.pipe(
+    this.filteredZones = this.myControl.valueChanges.pipe(
       map(value => typeof value === 'string' ? value : value.name),
       map(value => this._filter(value)
       )
@@ -40,7 +29,7 @@ export class TimezoneSelectorDialogComponent implements OnInit {
 
   private _filter(value: string): Zone[] {
     const filterValue = value.toLowerCase();
-    return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
+    return this.zones.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 
   displayFn(zone?: Zone): string | undefined {

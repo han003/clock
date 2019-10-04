@@ -3,6 +3,11 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TimezoneSelectorDialogComponent} from "./timezone-selector-dialog/timezone-selector-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 
+export interface Zone {
+  key: string,
+  name: string
+}
+
 @Component({
   selector: 'clock-header',
   templateUrl: './header.component.html',
@@ -10,27 +15,62 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   private interval: number;
-  time: String;
+  private zoneGuess: string = moment.tz.guess(true);
+  private storedZone: Zone = JSON.parse(localStorage.getItem('timezone'));
 
-  constructor(public dialog: MatDialog) { }
+  time: string;
+  zones: Zone[];
+  selectedZone: Zone = this.storedZone || {
+    name: this.formatZoneName(this.zoneGuess),
+    key: this.zoneGuess
+  };
+
+  constructor(public dialog: MatDialog) {
+  }
 
   ngOnInit() {
     this.interval = setInterval(() => {
-      this.time = moment().format('HH:mm:ss');
+      this.updateTime();
     }, 1000);
 
-    console.log(`moment.tz.names()`, moment.tz.names());
+    this.zones = moment.tz.names().map((n, i) => {
+      return {
+        key: n,
+        name: this.formatZoneName(n)
+      }
+    });
+
+    this.updateTime();
   }
 
   ngOnDestroy() {
     clearInterval(this.interval)
   }
 
-  openTimezoneSelectDialog(): void {
-    const dialogRef = this.dialog.open(TimezoneSelectorDialogComponent);
+  formatZoneName(name: string): string {
+    return name.split('_').join(' ');
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`result`, result);
+  updateTime() {
+    const format = 'HH:mm:ss';
+
+    if (this.selectedZone) {
+      this.time = moment().tz(this.selectedZone.key).format(format);
+    } else {
+      this.time = moment().format(format);
+    }
+  }
+
+  openTimezoneSelectDialog(): void {
+    const dialogRef = this.dialog.open(TimezoneSelectorDialogComponent, {
+      data: this.zones
+    });
+
+    dialogRef.afterClosed().subscribe((zone: Zone) => {
+      if (zone) {
+        this.selectedZone = zone;
+        localStorage.setItem('timezone', JSON.stringify(zone));
+      }
     });
   }
 }
