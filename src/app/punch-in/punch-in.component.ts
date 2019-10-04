@@ -1,10 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-
-interface Tile {
-  text: string;
-  func: Function;
-  class?: string;
-}
+import {Tile} from "./tile";
 
 @Component({
   selector: 'clock-punch-in',
@@ -22,18 +17,18 @@ export class PunchInComponent implements OnInit {
   ngOnInit() {
     this.numbers = [];
     this.tiles = [
-      {text: '1', func: this.addNumber.bind(this)},
-      {text: '2', func: this.addNumber.bind(this)},
-      {text: '3', func: this.addNumber.bind(this)},
-      {text: '4', func: this.addNumber.bind(this)},
-      {text: '5', func: this.addNumber.bind(this)},
-      {text: '6', func: this.addNumber.bind(this)},
-      {text: '7', func: this.addNumber.bind(this)},
-      {text: '8', func: this.addNumber.bind(this)},
-      {text: '9', func: this.addNumber.bind(this)},
-      {text: 'Clear', class: 'clear', func: this.clear.bind(this)},
-      {text: '0', func: this.addNumber.bind(this)},
-      {text: 'Submit', class: 'submit', func: this.submit.bind(this)},
+      new Tile('1', this.addNumber, this),
+      new Tile('2', this.addNumber, this),
+      new Tile('3', this.addNumber, this),
+      new Tile('4', this.addNumber, this),
+      new Tile('5', this.addNumber, this),
+      new Tile('6', this.addNumber, this),
+      new Tile('7', this.addNumber, this),
+      new Tile('8', this.addNumber, this),
+      new Tile('9', this.addNumber, this),
+      new Tile('Clear', this.clear, this, 'clear'),
+      new Tile('0', this.addNumber, this),
+      new Tile('Submit', this.submit, this, 'submit'),
     ];
 
     this.setNumber();

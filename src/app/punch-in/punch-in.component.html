@@ -8,7 +8,7 @@
     *ngFor="let tile of tiles"
     colspan="1"
     rowspan="1">
-    <button [ngClass]="tile.class" class="punch-button" mat-raised-button (click)="tile.func(tile)">
+    <button [ngClass]="tile.cssClass" class="punch-button" mat-raised-button (click)="tile.callback(tile)">
       <span class="mat-h2">{{tile.text}}</span>
     </button>
   </mat-grid-tile>
