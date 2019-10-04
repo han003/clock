@@ -16,7 +16,7 @@ export class TimezoneSelectorDialogComponent implements OnInit {
   filteredZones: Observable<Zone[]>;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: object,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<TimezoneSelectorDialogComponent>
   ) {
     this.zones = data.zones;
