@@ -1,3 +1,8 @@
 <mat-toolbar color="accent" fxLayout="row" fxLayoutAlign="center center">
   <img src="assets/img/eatw-time-logo-neg.png" alt="Logo">
+  <span>{{time}}</span>
+
+  <button (click)="openTimezoneSelectDialog()" mat-icon-button aria-label="Button for changing timezone">
+    <mat-icon>map</mat-icon>
+  </button>
 </mat-toolbar>

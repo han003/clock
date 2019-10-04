@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Set timezone</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input type="text" placeholder="Timezone" aria-label="Choose a timezone" matInput [formControl]="myControl" [matAutocomplete]="zones">
+  </mat-form-field>
+
+  <mat-autocomplete #zones="matAutocomplete" [displayWith]="displayFn">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{ option.name }}
+    </mat-option>
+  </mat-autocomplete>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button (click)="onUpdate()">Update</button>
+</div>

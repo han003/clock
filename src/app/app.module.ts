@@ -13,9 +13,12 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCardModule} from "@angular/material/card";
 import {FlexModule} from "@angular/flex-layout";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { PunchInComponent } from './punch-in/punch-in.component';
 import {MatGridListModule} from "@angular/material/grid-list";
+import { TimezoneSelectorDialogComponent } from './header/timezone-selector-dialog/timezone-selector-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
     HeaderComponent,
     LoginComponent,
     PunchInComponent,
+    TimezoneSelectorDialogComponent,
   ],
   imports: [
     FlexModule,
@@ -36,9 +40,15 @@ import {MatGridListModule} from "@angular/material/grid-list";
     MatButtonModule,
     MatCardModule,
     ReactiveFormsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule,
+    MatAutocompleteModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    TimezoneSelectorDialogComponent
+  ]
 })
 export class AppModule { }
