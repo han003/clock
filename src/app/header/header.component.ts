@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   updateTime() {
-    const format = 'HH:mm:ss';
+    const format = 'ddd HH:mm:ss';
 
     if (this.selectedZone) {
       this.time = moment().tz(this.selectedZone.key).format(format);
@@ -63,7 +63,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   openTimezoneSelectDialog(): void {
     const dialogRef = this.dialog.open(TimezoneSelectorDialogComponent, {
-      data: this.zones
+      data: {
+        zones: this.zones,
+        selectedZone: this.selectedZone
+      }
     });
 
     dialogRef.afterClosed().subscribe((zone: Zone) => {

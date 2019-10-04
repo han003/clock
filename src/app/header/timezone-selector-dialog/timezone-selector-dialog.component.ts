@@ -11,13 +11,17 @@ import {Zone} from "../header.component";
   styleUrls: ['./timezone-selector-dialog.component.scss']
 })
 export class TimezoneSelectorDialogComponent implements OnInit {
+  zones: Zone[];
   myControl = new FormControl();
   filteredZones: Observable<Zone[]>;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public zones: Zone[],
+    @Inject(MAT_DIALOG_DATA) public data: object,
     public dialogRef: MatDialogRef<TimezoneSelectorDialogComponent>
-  ) {}
+  ) {
+    this.zones = data.zones;
+    this.myControl.setValue(data.selectedZone);
+  }
 
   ngOnInit() {
     this.filteredZones = this.myControl.valueChanges.pipe(
