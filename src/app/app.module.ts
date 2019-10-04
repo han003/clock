@@ -22,7 +22,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    PunchInComponent
+    PunchInComponent,
   ],
   imports: [
     FlexModule,
