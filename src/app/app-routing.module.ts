@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 import {PunchInComponent} from "./punch-in/punch-in.component";
+import {UserComponent} from "./user/user.component";
 
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'punch-in', component: PunchInComponent},
+  {path: 'user/:id', component: UserComponent},
   {path: '**', redirectTo: '/login'}
 ];
 

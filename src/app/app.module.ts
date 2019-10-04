@@ -19,6 +19,7 @@ import {MatGridListModule} from "@angular/material/grid-list";
 import { TimezoneSelectorDialogComponent } from './header/timezone-selector-dialog/timezone-selector-dialog.component';
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dialog";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     LoginComponent,
     PunchInComponent,
     TimezoneSelectorDialogComponent,
+    UserComponent,
   ],
   imports: [
     FlexModule,
