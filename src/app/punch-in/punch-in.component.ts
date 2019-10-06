@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Tile} from "./tile";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'clock-punch-in',
@@ -11,7 +12,7 @@ export class PunchInComponent implements OnInit {
   public numbers: Number[];
   public number: Number;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -50,7 +51,7 @@ export class PunchInComponent implements OnInit {
 
   submit() {
     if (this.number) {
-      console.log(`submitting`, this.number);
+      this.router.navigate(['/user', this.number]);
     }
   }
 }

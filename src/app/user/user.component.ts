@@ -7,7 +7,8 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  user: any;
+  user: number;
+  imgSrc: string;
 
   constructor(
     private route: ActivatedRoute
@@ -15,8 +16,10 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
+    const avatarSize = 60;
     this.user = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.imgSrc = `https://api.adorable.io/avatars/${avatarSize}/${this.user}@example.com.png`;
 
-    console.log(`this.user`, this.user);
+    console.log(`this.imgSrc`, this.imgSrc);
   }
 }
