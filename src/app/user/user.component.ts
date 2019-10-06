@@ -2,6 +2,7 @@ import * as moment from 'moment-timezone/builds/moment-timezone-with-data-2012-2
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {FormControl} from "@angular/forms";
+import {Chance} from "chance";
 
 @Component({
   selector: 'clock-user',
@@ -14,6 +15,7 @@ export class UserComponent implements OnInit {
   date: moment.Moment;
   minDate: moment.Moment;
   maxDate: moment.Moment;
+  name: string;
 
   constructor(
     private route: ActivatedRoute
@@ -28,6 +30,7 @@ export class UserComponent implements OnInit {
     this.user = parseInt(this.route.snapshot.paramMap.get('id'));
     this.imgSrc = `https://api.adorable.io/avatars/${avatarSize}/${this.user}@example.com.png`;
 
-    console.log(`this.imgSrc`, this.imgSrc);
+    const chance = new Chance(this.user);
+    this.name = chance.name();
   }
 }
