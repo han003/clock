@@ -2,9 +2,15 @@
   <mat-card-header>
     <img mat-card-avatar [src]="imgSrc">
     <mat-card-title>User name</mat-card-title>
-    <mat-card-subtitle>{{user}}</mat-card-subtitle>
+    <mat-card-subtitle>#{{user}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    content goes here
+  <mat-card-content fxLayout="column">
+    <mat-form-field class="w-100">
+      <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="myDatepicker" [formControl]="date">
+      <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+      <mat-datepicker #myDatepicker></mat-datepicker>
+    </mat-form-field>
+
+    <button id="punch-in-button" mat-raised-button>Punch in</button>
   </mat-card-content>
 </mat-card>

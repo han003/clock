@@ -1,5 +1,7 @@
+import * as moment from 'moment-timezone/builds/moment-timezone-with-data-2012-2022.min';
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'clock-user',
@@ -9,10 +11,16 @@ import {ActivatedRoute} from "@angular/router";
 export class UserComponent implements OnInit {
   user: number;
   imgSrc: string;
+  date: moment.Moment;
+  minDate: moment.Moment;
+  maxDate: moment.Moment;
 
   constructor(
     private route: ActivatedRoute
   ) {
+    this.minDate = moment().subtract(1, 'd');
+    this.maxDate = moment().add(1, 'd');
+    this.date = new FormControl(moment());
   }
 
   ngOnInit() {
