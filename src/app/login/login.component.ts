@@ -30,10 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: FormGroup) {
-    console.log(`Pressed login`, form);
-
     if (form.valid) {
-      console.log(`form is valid`, );
       this.router.navigateByUrl('/punch-in');
     }
   }
