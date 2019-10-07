@@ -33,7 +33,8 @@ export class UserComponent implements OnInit {
         Validators.required,
         dateMinValidator(this.minDate),
         dateMaxValidator(this.maxDate)
-      ])
+      ]),
+      comment: new FormControl(null)
     });
 
     const avatarSize = 60;
