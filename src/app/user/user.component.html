@@ -5,20 +5,37 @@
     <mat-card-subtitle>#{{user}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="punchForm" autocomplete="off" novalidate fxLayout="column">
-      <mat-form-field class="w-100">
-        <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="myDatepicker" formControlName="businessDate">
-        <mat-error *ngIf="punchForm.get('businessDate').errors?.minDate">Choose on of the available dates</mat-error>
-        <mat-error *ngIf="punchForm.get('businessDate').errors?.maxDate">Choose on of the available dates</mat-error>
-        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-        <mat-datepicker #myDatepicker></mat-datepicker>
-      </mat-form-field>
+    <mat-tab-group mat-stretch-tabs>
+      <mat-tab label="Punch">
+        <div class="mat-tab-content">
+          <form [formGroup]="punchForm" autocomplete="off" novalidate fxLayout="column">
+            <mat-form-field class="w-100">
+              <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="myDatepicker" placeholder="Business date" formControlName="businessDate">
+              <mat-error *ngIf="punchForm.get('businessDate').errors?.minDate || punchForm.get('businessDate').errors?.maxDate">Choose on of the available dates</mat-error>
+              <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+              <mat-datepicker #myDatepicker></mat-datepicker>
+            </mat-form-field>
 
-      <mat-form-field>
-        <textarea matInput cdkTextareaAutosize placeholder="Leave a comment" formControlName="comment"></textarea>
-      </mat-form-field>
+            <mat-form-field>
+              <textarea matInput cdkTextareaAutosize placeholder="Leave a comment" formControlName="comment"></textarea>
+            </mat-form-field>
 
-      <button id="punch-in-button" mat-raised-button [disabled]="punchForm.invalid">Punch in</button>
-    </form>
+            <button id="punch-in-button" mat-raised-button [disabled]="punchForm.invalid">Punch in</button>
+          </form>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="History">
+        <div class="mat-tab-content">
+          <mat-list>
+            <mat-list-item *ngFor="let punch of punches">
+              <h3 matLine>{{punch.in}} to <span *ngIf="punch.out">{{punch.out}}</span><span *ngIf="!punch.out" class="still-working">still working</span></h3>
+              <p matLine>{{punch.time}} hours</p>
+              <p matLine>{{punch.date}}</p>
+            </mat-list-item>
+          </mat-list>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </mat-card-content>
 </mat-card>

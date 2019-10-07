@@ -23,6 +23,8 @@ import {UserComponent} from './user/user.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {DateAdapter, MAT_DATE_LOCALE, MatNativeDateModule, MAT_DATE_FORMATS} from "@angular/material/core";
 import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import {MAT_MOMENT_DATE_FORMATS, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTI
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTabsModule,
+    MatListModule,
   ],
   providers: [
     {
