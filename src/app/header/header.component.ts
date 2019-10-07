@@ -20,10 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   time: string;
   zones: Zone[];
-  selectedZone: Zone = this.storedZone || {
-    name: this.formatZoneName(this.zoneGuess),
-    key: this.zoneGuess
-  };
+  selectedZone: Zone;
 
   constructor(public dialog: MatDialog) {
   }
@@ -40,11 +37,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
     });
 
+    this.getZone();
     this.updateTime();
   }
 
   ngOnDestroy() {
     clearInterval(this.interval)
+  }
+
+  getZone() {
+    this.selectedZone = this.storedZone || {
+      name: this.formatZoneName(this.zoneGuess),
+      key: this.zoneGuess
+    };
   }
 
   formatZoneName(name: string): string {
@@ -55,7 +60,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     const format = 'ddd HH:mm:ss';
 
     if (this.selectedZone) {
-      this.time = moment().tz(this.selectedZone.key).format(format);
+      try {
+        this.time = moment().tz(this.selectedZone.key).format(format);
+      } catch (e) {
+        this.storedZone = null;
+        this.getZone();
+      }
     } else {
       this.time = moment().format(format);
     }

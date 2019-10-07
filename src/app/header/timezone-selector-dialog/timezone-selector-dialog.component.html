@@ -12,5 +12,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button [matDialogClose]>Cancel</button>
-  <button mat-button (click)="onUpdate()">Update</button>
+  <button mat-button (click)="onUpdate()" [disabled]="!myControl.value.name">Update</button>
 </div>
